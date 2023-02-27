@@ -1,0 +1,21 @@
+.pop-up__profile-ed{
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+	text-align: left top;
+	height: 35px;
+	width: 100%;
+	padding: 0;
+	text-overflow: ellipsis;
+ 	white-space: nowrap;
+  overflow: hidden;
+}
+
+.pop-up__profile-ed::placeholder{
+	font-family: 'Inter', 'Arial';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+	color: #000;
+}

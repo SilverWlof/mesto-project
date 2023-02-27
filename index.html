@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./pages/index.css">
+	<title>Mesto_Russia</title>
+</head>
+<body class="page">
+
+	<header class="header">
+			<img src="./images/Logo_White.png" alt="Mesto-logo" class="header__logo">		
+	</header>
+
+	<main class="main">
+
+		<form class="pop-up">
+			<fieldset class="pop-up__container">
+
+				<button class="button__close"></button>			
+				<h2 class="pop-up__header">Редактировать профиль</h2>
+
+				<input type="text" id="name" name="name" class="pop-up__profile-ed pop-up__profile-ed_name" placeholder="Жак-Ив Кусто">
+
+				<input type="text" id="description" name="description" class="pop-up__profile-ed pop-up__profile-ed_descr" placeholder="Исследователь океана">
+
+				<button class="button__save">Сохранить</button>
+
+			</fieldset>
+		</form>
+
+		<div class="profile">	 
+
+			<div class="profile__main">				
+				<img src="" class="profile__avatar">
+				<div class="profile__info">
+
+					<h1 class="profile__name">Жак-Ив Кусто</h1>
+
+					<button class="button__edit"></button>
+
+					<p class="profile__description">Исследователь океана</p>
+
+				</div>				
+			</div>
+
+			<button class="button__add-profile"></button>
+			
+		</div>
+
+		<div class="elements">
+			
+				<figure class="element">
+					<img src="./images/Karachaevsk.jpg" class="element__image">
+					<figcaption class="element__description">Карачаевск					
+					<label>
+							<input type="checkbox" name="like" class="button__hide" id="like">
+							<span class="button__like"></span>
+					</label>
+					</figcaption>					
+				</figure>
+
+				<figure class="element">
+					<img src="./images/Elbrus.png" class="element__image">
+					<figcaption class="element__description">Гора Эльбрус
+					
+					<label>
+							<input type="checkbox" name="like" class="button__hide" id="like">
+							<span class="button__like"></span>
+					</label>
+
+					</figcaption>					
+				</figure>
+
+				<figure class="element">
+					<img src="./images/Dombay.png" class="element__image">
+					<figcaption class="element__description">Домбай
+					
+					<label>
+							<input type="checkbox" name="like" class="button__hide" id="like">
+							<span class="button__like"></span>
+					</label>
+
+					</figcaption>					
+				</figure>
+
+				<figure class="element">
+					<img src="./images/Elbrus.png" class="element__image">
+					<figcaption class="element__description">Гора Эльбрус
+					
+					<label>
+							<input type="checkbox" name="like" class="button__hide" id="like">
+							<span class="button__like"></span>
+					</label>
+
+					</figcaption>					
+				</figure>
+
+				<figure class="element">
+					<img src="./images/Dombay.png" class="element__image">
+					<figcaption class="element__description">Домбай
+					
+					<label>
+							<input type="checkbox" name="like" class="button__hide" id="like">
+							<span class="button__like"></span>
+					</label>
+
+					</figcaption>					
+				</figure>
+
+				<figure class="element">
+					<img src="./images/Karachaevsk.jpg" class="element__image">
+					<figcaption class="element__description">Карачаевск
+					
+					<label>
+							<input type="checkbox" name="like" class="button__hide" id="like">
+							<span class="button__like"></span>
+					</label>
+
+					</figcaption>					
+				</figure>
+
+		</div>		
+		
+	</main>
+
+	<footer class="footer">
+
+		<p>© 2020 Mesto Russia</p>
+
+	</footer>
+	
+</body>
+</html>

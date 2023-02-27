@@ -1,0 +1,1 @@
+document.document.querySelector('.edit-overlay');//для кнопки закрыть внутри формы

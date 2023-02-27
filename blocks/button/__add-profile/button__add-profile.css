@@ -1,0 +1,22 @@
+.button__add-profile{
+	height: 50px;
+	width: 150px;
+	border: 2px #fff solid;
+	background-image: url("../../../images/Plas.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-size: 22px;
+}
+
+
+.button__add-profile:hover{
+	opacity: .6;
+}
+
+@media screen and (min-width:320px) and (max-width:767px){
+  .button__add-profile{
+    	width: 282px;
+    	background-size: 16px;
+  }
+}

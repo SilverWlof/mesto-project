@@ -1,0 +1,16 @@
+.button__hide{
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(0 0 0 0);
+	display: contents;
+}
+
+.button__hide:checked + .button__like{
+	background-image: url('../../../images/Union.png');	
+}
+
+.button__hide:checked + .button__like:hover{
+	opacity: 1;
+}
+

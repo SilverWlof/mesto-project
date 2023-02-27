@@ -1,0 +1,11 @@
+.pop-up__profile-ed_name{
+	margin-top: 39px;
+	margin-bottom: 21px;
+}
+
+@media screen and (min-width:320px) and (max-width:767px){
+	.pop-up__profile-ed_name{
+		margin-top: 66px;
+		margin-bottom: 21px;
+	}
+}
