@@ -10,5 +10,6 @@
 	.profile{
 		flex-direction: column;
 		margin-bottom: 36px;
+		margin-top: 42px;
 	}
 }

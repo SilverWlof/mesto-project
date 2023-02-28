@@ -9,7 +9,7 @@
 <body class="page">
 
 	<header class="header">
-			<img src="./images/Logo_White.png" alt="Mesto-logo" class="header__logo">		
+			<img src="./images/Logo_White.svg" alt="Mesto-logo" class="header__logo">		
 	</header>
 
 	<main class="main">
@@ -17,14 +17,14 @@
 		<form class="pop-up">
 			<fieldset class="pop-up__container">
 
-				<button class="button__close"></button>			
+				<button type="button" class="button__close"></button>			
 				<h2 class="pop-up__header">Редактировать профиль</h2>
 
 				<input type="text" id="name" name="name" class="pop-up__profile-ed pop-up__profile-ed_name" placeholder="Жак-Ив Кусто">
 
 				<input type="text" id="description" name="description" class="pop-up__profile-ed pop-up__profile-ed_descr" placeholder="Исследователь океана">
 
-				<button class="button__save">Сохранить</button>
+				<button type="button" class="button__save">Сохранить</button>
 
 			</fieldset>
 		</form>
@@ -37,89 +37,67 @@
 
 					<h1 class="profile__name">Жак-Ив Кусто</h1>
 
-					<button class="button__edit"></button>
+					<button type="button" class="button__edit"></button>
 
 					<p class="profile__description">Исследователь океана</p>
 
 				</div>				
 			</div>
 
-			<button class="button__add-profile"></button>
+			<button type="button" class="button__add-profile"></button>
 			
 		</div>
 
 		<div class="elements">
 			
-				<figure class="element">
-					<img src="./images/Karachaevsk.jpg" class="element__image">
-					<figcaption class="element__description">Карачаевск					
-					<label>
-							<input type="checkbox" name="like" class="button__hide" id="like">
-							<span class="button__like"></span>
-					</label>
-					</figcaption>					
-				</figure>
+				<article class="element">
+					<img src="./images/Karachaevsk.jpg" alt="Karachaevsk" class="element__image">
+					<div class="element__description">
+						<p class="element__text">Карачаевск</p>
+						<button type="button" class="button__like"></button>
+					</div>					
+				</article>	
 
-				<figure class="element">
-					<img src="./images/Elbrus.png" class="element__image">
-					<figcaption class="element__description">Гора Эльбрус
-					
-					<label>
-							<input type="checkbox" name="like" class="button__hide" id="like">
-							<span class="button__like"></span>
-					</label>
+				<article class="element">
+					<img src="./images/Elbrus.png" alt="Elbrus" class="element__image">
+					<div class="element__description">
+						<p class="element__text">Гора Эльбрус</p>
+						<button type="button" class="button__like"></button>
+					</div>					
+				</article>
 
-					</figcaption>					
-				</figure>
+				<article class="element">
+					<img src="./images/Dombay.png" alt="Dombay" class="element__image">
+					<div class="element__description">
+						<p class="element__text">Домбай</p>
+						<button type="button" class="button__like"></button>
+					</div>					
+				</article>
 
-				<figure class="element">
-					<img src="./images/Dombay.png" class="element__image">
-					<figcaption class="element__description">Домбай
-					
-					<label>
-							<input type="checkbox" name="like" class="button__hide" id="like">
-							<span class="button__like"></span>
-					</label>
+				<article class="element">
+					<img src="./images/Elbrus.png" alt="Elbrus" class="element__image">
+					<div class="element__description">
+						<p class="element__text">Гора Эльбрус</p>
+						<button type="button" class="button__like"></button>
+					</div>					
+				</article>
 
-					</figcaption>					
-				</figure>
+				<article class="element">
+					<img src="./images/Dombay.png" alt="Dombay" class="element__image">
+					<div class="element__description">
+						<p class="element__text">Домбай</p>
+						<button type="button" class="button__like"></button>
+					</div>					
+				</article>
 
-				<figure class="element">
-					<img src="./images/Elbrus.png" class="element__image">
-					<figcaption class="element__description">Гора Эльбрус
-					
-					<label>
-							<input type="checkbox" name="like" class="button__hide" id="like">
-							<span class="button__like"></span>
-					</label>
-
-					</figcaption>					
-				</figure>
-
-				<figure class="element">
-					<img src="./images/Dombay.png" class="element__image">
-					<figcaption class="element__description">Домбай
-					
-					<label>
-							<input type="checkbox" name="like" class="button__hide" id="like">
-							<span class="button__like"></span>
-					</label>
-
-					</figcaption>					
-				</figure>
-
-				<figure class="element">
-					<img src="./images/Karachaevsk.jpg" class="element__image">
-					<figcaption class="element__description">Карачаевск
-					
-					<label>
-							<input type="checkbox" name="like" class="button__hide" id="like">
-							<span class="button__like"></span>
-					</label>
-
-					</figcaption>					
-				</figure>
-
+				<article class="element">
+					<img src="./images/Karachaevsk.jpg" alt="Karachaevsk" class="element__image">
+					<div class="element__description">
+						<p class="element__text">Карачаевск</p>
+						<button type="button" class="button__like"></button>
+					</div>					
+				</article>
+				
 		</div>		
 		
 	</main>

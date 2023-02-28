@@ -14,7 +14,34 @@
 .pop-up__profile-ed::placeholder{
 	font-family: 'Inter', 'Arial';
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color: #000;
+}
+
+.pop-up__profile-ed::-webkit-input-placeholder{
+	font-family: 'Inter', 'Arial';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color: #000;
+}
+
+.pop-up__profile-ed::-moz-placeholder{
+	font-family: 'Inter', 'Arial';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color: #000;
+}
+
+.pop-up__profile-ed::-ms-input-placeholder{
+	font-family: 'Inter', 'Arial';
+	font-style: normal;
+	font-weight: 500;
 	font-size: 14px;
 	line-height: 17px;
 	color: #000;

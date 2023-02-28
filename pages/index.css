@@ -22,7 +22,6 @@
 
 @import url('../blocks/button/__edit/button__edit.css');
 @import url('../blocks/button/__like/button__like.css');
-@import url('../blocks/button/__hide/button__hide.css');
 @import url('../blocks/button/__add-profile/button__add-profile.css');
 @import url('../blocks/button/__save/button__save.css');
 @import url('../blocks/button/__close/button__close.css');
@@ -32,5 +31,6 @@
 @import url('../blocks/element/element.css');
 @import url('../blocks/element/__image/element__image.css');
 @import url('../blocks/element/__description/element__description.css');
+@import url('../blocks/element/__text/element__text.css');
 
 @import url('../blocks/footer/footer.css');
