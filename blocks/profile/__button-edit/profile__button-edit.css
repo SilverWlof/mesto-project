@@ -1,4 +1,4 @@
-.button__edit{
+.profile__button-edit{
 	width: 24px;
 	height: 24px;
 	background-image: url('../../../images/Pansel.svg');
@@ -9,14 +9,17 @@
 	margin-bottom: 8px;
 }
 
-.button__edit:hover{
+.profile__button-edit:hover{
 	opacity: .6;
+	cursor: pointer
 }
 
 @media screen and (min-width:320px) and (max-width:767px){
-  .button__edit{
+  .profile__button-edit{
     width: 18px;
 		height: 18px;
 		margin: 0;
+		background-size: 7.5px;
+		justify-self: baseline;
   }
 }

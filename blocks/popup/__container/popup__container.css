@@ -1,4 +1,4 @@
-.pop-up__container{
+.popup__container{
 	position: fixed;
 	background-color: #fff;
 	width: 430px;
@@ -11,11 +11,12 @@
 	padding: 34px 36px 0;
 	border: none;
 	margin: 0;
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 	box-sizing: border-box;
 }
 
 @media screen and (min-width:320px) and (max-width:767px){
-	.pop-up__container{
+	.popup__container{
 		height: 322px;
 		width: 282px;
 		left: auto;

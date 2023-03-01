@@ -5,6 +5,8 @@
 	grid-template-columns: auto auto;
 	column-gap:20px ;
 	row-gap: 8px;
+	max-width: 50%;
+	min-width: max-content;
 }
 
 @media screen and (min-width:320px) and (max-width:767px){

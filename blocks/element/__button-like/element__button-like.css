@@ -1,6 +1,4 @@
-.button__like{
-	display: inline-block;
-	vertical-align: middle;
+.element__button-like{
 	width: 22px;
 	height: 19px;
 	background-image: url('../../../images/Heart.svg');
@@ -10,11 +8,12 @@
 	padding: 0;
 }
 
-.button__like:hover{
+.element__button-like:hover{
 	opacity: .5;
+	cursor: pointer
 }
 
-.button__like:active{
+.element__button-like:active{
 	background-image: url('../../../images/Union.svg');	
 	opacity: 1;
 }

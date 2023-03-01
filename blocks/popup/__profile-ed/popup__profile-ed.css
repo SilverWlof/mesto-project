@@ -1,4 +1,10 @@
-.pop-up__profile-ed{
+.popup__profile-ed{
+	font-family: 'Inter', 'Arial', sans-serif ;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+	color: #000;
 	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -6,12 +12,19 @@
 	height: 35px;
 	width: 100%;
 	padding: 0;
-	text-overflow: ellipsis;
- 	white-space: nowrap;
-  overflow: hidden;
+}
+.popup__profile-ed:first-child {
+	margin-bottom: 21px;
 }
 
-.pop-up__profile-ed::placeholder{
+@media screen and (min-width:320px) and (max-width:767px){
+	.popup__profile-ed:first-child {
+	margin-bottom: 21px;
+}
+}
+
+
+.popup__profile-ed::placeholder{
 	font-family: 'Inter', 'Arial';
 	font-style: normal;
 	font-weight: 500;
@@ -20,7 +33,7 @@
 	color: #000;
 }
 
-.pop-up__profile-ed::-webkit-input-placeholder{
+.popup__profile-ed::-webkit-input-placeholder{
 	font-family: 'Inter', 'Arial';
 	font-style: normal;
 	font-weight: 500;
@@ -29,7 +42,7 @@
 	color: #000;
 }
 
-.pop-up__profile-ed::-moz-placeholder{
+.popup__profile-ed::-moz-placeholder{
 	font-family: 'Inter', 'Arial';
 	font-style: normal;
 	font-weight: 500;
@@ -38,7 +51,7 @@
 	color: #000;
 }
 
-.pop-up__profile-ed::-ms-input-placeholder{
+.popup__profile-ed::-ms-input-placeholder{
 	font-family: 'Inter', 'Arial';
 	font-style: normal;
 	font-weight: 500;

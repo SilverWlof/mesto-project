@@ -1,4 +1,4 @@
-.button__add-profile{
+.profile__button-add-profile{
 	height: 50px;
 	width: 150px;
 	border: 2px #fff solid;
@@ -7,15 +7,17 @@
 	background-repeat: no-repeat;
 	background-color: transparent;
 	background-size: 22px;
+	border-radius: 2px;
 }
 
 
-.button__add-profile:hover{
+.profile__button-add-profile:hover{
 	opacity: .6;
+	cursor: pointer
 }
 
 @media screen and (min-width:320px) and (max-width:767px){
-  .button__add-profile{
+  .profile__button-add-profile{
     	width: 282px;
     	background-size: 16px;
   }
