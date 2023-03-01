@@ -17,15 +17,8 @@
 	margin-bottom: 21px;
 }
 
-@media screen and (min-width:320px) and (max-width:767px){
-	.popup__profile-ed:first-child {
-	margin-bottom: 21px;
-}
-}
-
-
 .popup__profile-ed::placeholder{
-	font-family: 'Inter', 'Arial';
+	font-family: 'Inter', 'Arial', sans-serif;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;
@@ -34,7 +27,7 @@
 }
 
 .popup__profile-ed::-webkit-input-placeholder{
-	font-family: 'Inter', 'Arial';
+	font-family: 'Inter', 'Arial', sans-serif;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;
@@ -43,7 +36,7 @@
 }
 
 .popup__profile-ed::-moz-placeholder{
-	font-family: 'Inter', 'Arial';
+	font-family: 'Inter', 'Arial', sans-serif;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;
@@ -52,7 +45,7 @@
 }
 
 .popup__profile-ed::-ms-input-placeholder{
-	font-family: 'Inter', 'Arial';
+	font-family: 'Inter', 'Arial', sans-serif;
 	font-style: normal;
 	font-weight: 500;
 	font-size: 14px;

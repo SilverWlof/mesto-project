@@ -9,6 +9,14 @@
 	.elements{
 		gap: 20px 0;
 		justify-content: center;
-	}
-	
+		grid-template-columns: min-content;
+	}	
+}
+
+@media screen and (min-width:768px) and (max-width:900px){
+	.elements{
+		gap: 20px 0;
+		justify-content: center;
+		grid-template-columns: max-content;
+	}	
 }
