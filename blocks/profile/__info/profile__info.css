@@ -12,7 +12,7 @@
   .profile__info{
     justify-items: center;
     align-items: center;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: minmax(max-content, 1fr) minmax(max-content, 1fr) minmax(max-content, 1fr);
     gap: 7px 11px;
   }
 }

@@ -8,7 +8,8 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	width: 294px;
+	max-width: 294px;
+	width: 100%;
 }
 
 @media screen and (max-width:767px){
@@ -17,6 +18,7 @@
 		line-height: 33px;
 		grid-column: 2/3;
 		margin-left: 16px;
-		width: 198px;
+		max-width: 198px;
+		width: 100%;
   }
 }

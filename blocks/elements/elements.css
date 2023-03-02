@@ -7,8 +7,8 @@
 
 @media screen and (max-width:900px){
 	.elements{
-		gap: 20px 0;
-		grid-template-columns: max-content;
+		gap: 20px 17px;
+		grid-template-columns: 282px 282px;
 	}	
 }
 
