@@ -2,21 +2,20 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 282px);
 	gap: 20px 17px;
+	justify-content: center;
 }
 
-
-@media screen and (min-width:320px) and (max-width:767px){
+@media screen and (max-width:900px){
 	.elements{
 		gap: 20px 0;
-		justify-content: center;
-		grid-template-columns: min-content;
-	}	
-}
-
-@media screen and (min-width:768px) and (max-width:900px){
-	.elements{
-		gap: 20px 0;
-		justify-content: center;
 		grid-template-columns: max-content;
 	}	
 }
+
+@media screen and (max-width:767px){
+	.elements{
+		grid-template-columns: 282px;
+		margin: 0 19px;
+	}	
+}
+

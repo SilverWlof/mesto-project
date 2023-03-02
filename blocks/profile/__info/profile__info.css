@@ -5,10 +5,10 @@
 	grid-template-columns: auto auto;
 	column-gap:20px ;
 	row-gap: 8px;
-	width: 336px;
+	max-width: 336px;
 }
 
-@media screen and (min-width:320px) and (max-width:767px){
+@media screen and (max-width:767px){
   .profile__info{
     justify-items: center;
     align-items: center;
