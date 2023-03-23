@@ -16,16 +16,16 @@
       <section id="popup-profile" class="popup">
         <div class="popup__container">
           <button type="button" class="popup__button-close"></button>
-
           <h2 class="popup__header">Редактировать профиль</h2>
 
           <form >
-            <input type="text" id="name" name="name" class="popup__profile-ed" required>
 
-            <input type="text" id="description" name="description" class="popup__profile-ed" required>
-
+            <input type="text" id="name" name="name" class="popup__profile-ed" placeholder = 'Введите имя' required>
+            <input type="text" id="description" name="description" class="popup__profile-ed" placeholder="Чем вы занимаетесь?" required>
             <button id="button-save-profile" type="submit" class="popup__button-save">Сохранить</button>
+
           </form>
+
         </div>
       </section>
 
@@ -36,7 +36,7 @@
           <h2 class="popup__header">Новое место</h2>
 
           <form >
-            <input type="text" id="placeName" name="placeName" class="popup__new-item" placeholder="Название" required >
+            <input type="text" id="placeName" name="placeName" class="popup__new-item" placeholder="Название места" required >
 
             <input type="text" id="image" name="image" class="popup__new-item" placeholder="Ссылка на картинку" required>
 
@@ -49,7 +49,7 @@
       <section id="popup-zoom" class="popup popup_dark-back">
         <div class="popup__zoom">
           <button type="button" class="popup__button-close"></button>
-          <img src="./images/11.jpg" class="popup__zoom-in">
+          <img src="" class="popup__zoom-in">
           <p class="popup__zoom-description">Test Text</p>
         </div>
       </section>
