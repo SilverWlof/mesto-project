@@ -7,9 +7,16 @@
 @import url('../blocks/header/__logo/header__logo.css');
 
 @import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/_dark-back/popup_dark-back.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__header/popup__header.css');
 @import url('../blocks/popup/__profile-ed/popup__profile-ed.css');
+@import url('../blocks/popup/__new-item/popup__new-item.css');
+@import url('../blocks/popup/__zoom/popup__zoom.css');
+@import url('../blocks/popup/__zoom-in/popup__zoom-in.css');
+@import url('../blocks/popup/__zoom-description/popup__zoom-description.css');
+
+
 @import url('../blocks/popup/__container/popup__container.css');
 @import url('../blocks/popup/__button-save/popup__button-save.css');
 @import url('../blocks/popup/__button-close/popup__button-close.css');
@@ -30,9 +37,8 @@
 @import url('../blocks/element/__description/element__description.css');
 @import url('../blocks/element/__text/element__text.css');
 @import url('../blocks/element/__button-like/element__button-like.css');
+@import url('../blocks/element/__button-like/_liked/element__button-like_liked.css');
+@import url('../blocks/element/__button-delete/element__button-delete.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
-
-* { outline: 1px solid yellow; }
-

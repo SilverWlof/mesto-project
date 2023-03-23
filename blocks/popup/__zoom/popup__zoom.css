@@ -1,0 +1,11 @@
+.popup__zoom{
+	position: relative;
+	max-width: 75vw;
+	max-height: 75vh;
+}
+
+@media screen and (max-width:768px){
+	.popup__zoom{		
+		margin: 0 40px;
+	}
+}
