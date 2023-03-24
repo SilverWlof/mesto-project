@@ -14,10 +14,7 @@ const profileDescription = profile.querySelector('.profile__description');
 const popupProfileName = popupProfile.querySelector('#name');
 const popupProfileDescription = popupProfile.querySelector('#description');
 
-const item = {
-		text: popupPlace.querySelector('#placeName').value,
-		image: popupPlace.querySelector('#image').value
-	}
+
 
 const closeButtons = document.querySelectorAll('.popup__button-close');
 
@@ -139,6 +136,10 @@ popupProfile.addEventListener('submit',function(event){
 //отправка карточки элемента
 popupPlace.addEventListener('submit', function (event) {
 	event.preventDefault();	
+	const item = {
+		text: popupPlace.querySelector('#placeName').value,
+		image: popupPlace.querySelector('#image').value
+	}
 	closePopup(popupPlace);
 	event.target.reset();
 	creatingInitialCards(item);
