@@ -6,6 +6,20 @@ const popupProfile = document.querySelector('#popup-profile');
 const popupPlace = document.querySelector('#popup-place');
 const popupZoom = document.querySelector('#popup-zoom');
 
+const zoomImage = popupZoom.querySelector('.popup__zoom-in');
+const zoomDescript = popupZoom.querySelector('.popup__zoom-description');
+
+const profileName = profile.querySelector('.profile__name');
+const profileDescription = profile.querySelector('.profile__description');
+const popupProfileName = popupProfile.querySelector('#name');
+const popupProfileDescription = popupProfile.querySelector('#description');
+
+const item = {
+		text: popupPlace.querySelector('#placeName').value,
+		image: popupPlace.querySelector('#image').value
+	}
+
+const closeButtons = document.querySelectorAll('.popup__button-close');
 
 const initialCards = [
 	{
@@ -38,10 +52,7 @@ const initialCards = [
 
 
 //создание карточек
-// prependCard
-//creatingСard
-//startCardCreate
-function creatingСard (object){
+function createСard (object){
 	const elementTemplate = document.querySelector('#element').content; 
 	const element = elementTemplate.querySelector('.element').cloneNode(true);
 	const elementText = element.querySelector('.element__text');
@@ -58,8 +69,6 @@ function creatingСard (object){
 	})
 
 	elementImage.addEventListener('click', function(event){
-		const zoomImage = popupZoom.querySelector('.popup__zoom-in');
-		const zoomDescript = popupZoom.querySelector('.popup__zoom-description');
 		zoomImage.src = event.target.src
 		zoomImage.alt = event.target.alt
 		zoomDescript.textContent = event.target.alt
@@ -74,7 +83,7 @@ function creatingСard (object){
 }
 
 function creatingInitialCards(item){
-	const element = creatingСard(item);
+	const element = createСard(item);
 	elements.prepend(element);
 }
 
@@ -89,6 +98,11 @@ function openPopup(item){
 function closePopup(item){
 	item.classList.remove('popup_opened');
 }
+
+closeButtons.forEach((button) =>{
+	const popup = button.closest('.popup');
+	button.addEventListener('click', () => closePopup(popup));
+});
 //*****************************************************
 
 
@@ -96,10 +110,9 @@ function closePopup(item){
 //попап профиля
 profile.querySelector('.profile__button-edit').addEventListener('click', function () {
 	openPopup(popupProfile);
+	popupProfileName.value = profileName.textContent ;
+	popupProfileDescription.value = profileDescription.textContent;
 });
-popupProfile.querySelector('.popup__button-close').addEventListener('click', function (){
-	closePopup(popupProfile);  
-}); 
 //*****************************************************
 
 
@@ -108,33 +121,16 @@ popupProfile.querySelector('.popup__button-close').addEventListener('click', fun
 profile.querySelector('.profile__button-add-profile').addEventListener('click', function () {
 	openPopup(popupPlace);
 });
-popupPlace.querySelector('.popup__button-close').addEventListener('click', function () {
-	closePopup(popupPlace);  
-}); 
-//*****************************************************
-
-
-
-//попап зума
-popupZoom.querySelector('.popup__button-close').addEventListener('click', function () {
-	closePopup(popupZoom);  
-})
-
 //*****************************************************
 
 
 
 //отправка данный в профиль
 popupProfile.addEventListener('submit',function(event){
-	event.preventDefault();
-	closePopup(popupProfile);
-	const profileName = profile.querySelector('.profile__name');
-	const profileDescription = profile.querySelector('.profile__description');
-	const popupProfileName = popupProfile.querySelector('#name');
-	const popupProfileDescription = popupProfile.querySelector('#description');
-	
+	event.preventDefault();	
 	profileName.textContent = popupProfileName.value;
 	profileDescription.textContent = popupProfileDescription.value;	
+	closePopup(popupProfile);
 });
 //*****************************************************
 
@@ -142,12 +138,9 @@ popupProfile.addEventListener('submit',function(event){
 
 //отправка карточки элемента
 popupPlace.addEventListener('submit', function (event) {
-	event.preventDefault();
-	popupPlace.classList.remove('popup_opened');
-	const item = {
-		text: popupPlace.querySelector('#placeName').value,
-		image: popupPlace.querySelector('#image').value
-	}
+	event.preventDefault();	
+	closePopup(popupPlace);
+	event.target.reset();
 	creatingInitialCards(item);
 }); 
 
