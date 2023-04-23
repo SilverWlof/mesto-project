@@ -1,0 +1,13 @@
+.popup__warning{
+	color: #ff0000;
+	font-family: 'Inter';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 15px;
+	margin: 0;
+	visibility: hidden;
+	position: absolute;
+	left: 0;
+	top: 33px;
+}

@@ -3,6 +3,11 @@
 	height: 120px;
 	border-radius: 50%;
 	margin-right: 30px;
+  z-index: 9;
+}
+
+.profile__avatar:hover + .profile__edit-avatar{
+  z-index: 10;
 }
 
 @media screen and (max-width:767px){
