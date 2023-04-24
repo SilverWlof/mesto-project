@@ -1,15 +1,15 @@
-import {profile, profileEditForm, cardAddForm, closeButtons, popupProfile, popupPlace, popupAvatar, profileName, profileDescription, popupAvatarImage} from '../lib/lib.js'
-import {setEventListener} from '../validity/validity.js';
+import {profile, profileEditForm, cardAddForm, closeButtons, popupProfile, popupPlace, popupAvatar, profileName, profileDescription, popupAvatarImage} from './lib.js'
+import {setEventListener} from './validate.js';
 // открытие закрытие попапов
 let popupActive = "";
 
 export function openPopup(item){
 	item.classList.add('popup_opened');
-	popupActive = item;
+	popupActive = item;	
 }
 
 export function closePopup(item){
-	item.classList.remove('popup_opened');
+	item.classList.remove('popup_opened');	
 }
 
 closeButtons.forEach((button) =>{
@@ -20,12 +20,9 @@ closeButtons.forEach((button) =>{
 document.addEventListener('keydown', (e)=>{
 	if(e.key == "Escape"){
 		closePopup(popupActive);
-		console.log(popupActive.name)
 	}
 })
 //*****************************************************
-
-
 
 //попап аватарки
  profile.querySelector('.profile__edit-avatar').addEventListener('click',(event)=>{
@@ -48,3 +45,20 @@ profile.querySelector('.profile__button-add-profile').addEventListener('click',(
 	setEventListener(popupPlace);
 });
 //*****************************************************
+
+//отправка данный в профиль
+
+popupProfile.addEventListener('submit',(event)=>{
+	event.preventDefault();	
+	profileName.textContent = profileEditForm.name.value;
+  profileDescription.textContent = profileEditForm.description.value;	
+	closePopup(popupProfile);
+});
+
+//смена аватарки
+popupAvatar.addEventListener('submit',(event)=>{
+	event.preventDefault();
+	profileAvatar.src = popupAvatarImage.value;
+	closePopup(popupAvatar);
+	event.target.reset();
+})

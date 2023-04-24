@@ -1,5 +1,5 @@
-import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom, popupPlace} from '../lib/lib.js';
-import {closePopup, openPopup} from "../open-close-popup/open-close-popup.js";
+import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom, popupPlace} from './lib.js';
+import {closePopup, openPopup} from "./modal.js";
 /*
 написать через fetch и Promise. данные отправляются на сервер и от туда подгружаются.
 так же сделать с профилем
@@ -53,5 +53,17 @@ popupPlace.addEventListener('submit',(event)=>{
 }); 
 
 //*****************************************************
+
+
+
+//Обработчик лайка
+
+elements.addEventListener('click', (evt)=>{
+	if(evt.target.classList.contains('element__button-like')){
+	event.target.classList.toggle('element__button-like_liked');}
+})
+
+//***************************************************
+
 
 initialCards.forEach(creatingInitialCards);
