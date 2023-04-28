@@ -1,27 +1,35 @@
-import {profile, profileEditForm, cardAddForm, closeButtons, popupProfile, popupPlace, popupAvatar, profileName, profileDescription, popupAvatarImage} from './lib.js'
-import {setEventListener} from './validate.js';
+import {formList, ValidationSettings, popups, profile, profileEditForm, cardAddForm, popupProfile, popupPlace, popupAvatar, profileName, profileDescription, popupAvatarImage} from './lib.js'
+import {enableValidation} from './validate.js';
 // открытие закрытие попапов
-let popupActive = "";
 
 export function openPopup(item){
 	item.classList.add('popup_opened');
-	popupActive = item;	
+	document.addEventListener('keydown', closeByEscape);
 }
 
 export function closePopup(item){
-	item.classList.remove('popup_opened');	
+	item.classList.remove('popup_opened');
+	document.removeEventListener('keydown', closeByEscape); 
 }
 
-closeButtons.forEach((button) =>{
-	const popupClosest = button.closest('.popup');
-	button.addEventListener('click', () => closePopup(popupClosest));
-});
 
-document.addEventListener('keydown', (e)=>{
-	if(e.key == "Escape"){
-		closePopup(popupActive);
-	}
+popups.forEach((popup) => {
+	popup.addEventListener('mousedown', (evt) => {
+		if (evt.target.classList.contains('popup_opened')) {
+			closePopup(popup)
+		}
+		if (evt.target.classList.contains('popup__button-close')) {
+			closePopup(popup)
+		}
+	})
 })
+
+function closeByEscape(e){
+  if (e.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened') 
+    closePopup(openedPopup);
+  }
+}
 //*****************************************************
 
 //попап аватарки
@@ -33,7 +41,6 @@ document.addEventListener('keydown', (e)=>{
 //попап профиля
 profile.querySelector('.profile__button-edit').addEventListener('click',()=> {
 	openPopup(popupProfile);
-	setEventListener(popupProfile);
 	profileEditForm.name.value = profileName.textContent ;
 	profileEditForm.description.value = profileDescription.textContent;
 });
@@ -42,7 +49,6 @@ profile.querySelector('.profile__button-edit').addEventListener('click',()=> {
 //попапа новых карточек
 profile.querySelector('.profile__button-add-profile').addEventListener('click',()=> {
 	openPopup(popupPlace);
-	setEventListener(popupPlace);
 });
 //*****************************************************
 
@@ -62,3 +68,5 @@ popupAvatar.addEventListener('submit',(event)=>{
 	closePopup(popupAvatar);
 	event.target.reset();
 })
+
+enableValidation(ValidationSettings);

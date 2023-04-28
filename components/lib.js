@@ -1,3 +1,4 @@
+export const popups = document.querySelectorAll('.popup');
 export const popupProfile = document.querySelector('#popup-profile');
 export const popupPlace = document.querySelector('#popup-place');
 export const popupZoom = document.querySelector('#popup-zoom');
@@ -18,9 +19,9 @@ export const profileAvatar = profile.querySelector('.profile__avatar');
 
 export const popupAvatarImage = popupAvatar.querySelector('#avatarImage');
 
-export const closeButtons = document.querySelectorAll('.popup__button-close');
-
 export const elements = document.querySelector('.elements');
+
+export const formList = Array.from(document.querySelectorAll('.form'));
 
 export const initialCards = [
 	{
@@ -48,3 +49,12 @@ export const initialCards = [
 		text: 'Байкал'
 	}	
 ];
+
+export const ValidationSettings = {
+	formList:'form',
+	inputList:'popup__input',
+  ButtonSave: 'popup__button-save',
+  inactiveButton: 'popup__button-save_disable',
+  inputError: 'error',
+  errorClass: 'popup__warning_show'
+}; 

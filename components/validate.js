@@ -1,20 +1,20 @@
 //вешаем слушатель на активную форму
-export function enableValidation(){
-  const formList = Array.from(document.querySelectorAll('.form'));
+export function enableValidation(settings){
+  const formList = Array.from(document.querySelectorAll('.' + settings.formList));
   formList.forEach((formElement)=>{
     const fieldsetList = 
-    setEventListener(formElement);
+    setEventListener(formElement, settings);
   })
 }
 
-export function setEventListener (popupActive){
-  const inputList = Array.from(popupActive.querySelectorAll('.popup__input'));
-  const buttonSave = popupActive.querySelector('.popup__button-save');
-  setSaveButtonStatus(inputList, buttonSave);
+function setEventListener (formElement, settings){
+  const inputList = Array.from(formElement.querySelectorAll('.' + settings.inputList));
+  const buttonSave = formElement.querySelector('.' + settings.ButtonSave);
+  setSaveButtonStatus(inputList, buttonSave, settings);
   inputList.forEach((inputElement) =>{
     inputElement.addEventListener('input', ()=>{
-      checkInputValidity(popupActive, inputElement);
-      setSaveButtonStatus(inputList, buttonSave);
+      checkInputValidity(formElement, inputElement, settings);
+      setSaveButtonStatus(inputList, buttonSave, settings);
     })
   })
 }
@@ -22,7 +22,7 @@ export function setEventListener (popupActive){
 
 
 //вывод текстовой ошибки
-function checkInputValidity (form, input) {
+function checkInputValidity (form, input, settings) {
 	const isValid = input.validity.valid
 	if (input.validity.patternMismatch) {
 		input.setCustomValidity(input.dataset.errorMassage);
@@ -32,36 +32,36 @@ function checkInputValidity (form, input) {
   	input.setCustomValidity("");
   };
 	  if(!input.validity.valid){
-    showError(input, form, input.validationMessage);
+    showError(input, form, input.validationMessage, settings);
   } else{
-    hideError(input, form);
+    hideError(input, form, settings);
   };
 };
 
-function showError (input, form, errorMessage) {
-	const errorSpan = form.querySelector(`.${input.id}-error`);  
-  input.classList.add("popup__warning_show")   
-  errorSpan.classList.add('popup__warning_show')
+function showError (input, form, errorMessage, settings) {
+	const errorSpan = form.querySelector(`.${input.id}-` + settings.inputError);  
+  input.classList.add(settings.errorClass)   
+  errorSpan.classList.add(settings.errorClass)
   errorSpan.textContent = errorMessage;
 };
 
-function hideError (input, form) {
-	const errorSpan = form.querySelector(`.${input.id}-error`);
-  input.classList.remove("popup__warning_show")  
+function hideError (input, form, settings) {
+	const errorSpan = form.querySelector(`.${input.id}-` + settings.inputError);
+  input.classList.remove(settings.errorClass)  
   errorSpan.textContent = '';
-  errorSpan.classList.remove('popup__warning_show')
+  errorSpan.classList.remove(settings.errorClass)
 };
 //*****************************************************
 
 
 //переключение кнопи сохранения
-function setSaveButtonStatus (inputList, button){
+function setSaveButtonStatus (inputList, button, settings){
   if(hasInvalidInput(inputList)){
     button.setAttribute('disabled', true);
-    button.classList.add('popup__button-save_disable'); 
+    button.classList.add(settings.inactiveButton); 
   }else {
     button.removeAttribute('disabled');
-    button.classList.remove('popup__button-save_disable');
+    button.classList.remove(settings.inactiveButton);
     
   }
 }
