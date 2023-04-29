@@ -5,6 +5,7 @@ import {enableValidation} from './validate.js';
 export function openPopup(item){
 	item.classList.add('popup_opened');
 	document.addEventListener('keydown', closeByEscape);
+	enableValidation(ValidationSettings);
 }
 
 export function closePopup(item){
