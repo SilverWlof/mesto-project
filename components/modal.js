@@ -1,11 +1,16 @@
-import {formList, ValidationSettings, popups, profile, profileEditForm, cardAddForm, popupProfile, popupPlace, popupAvatar, profileName, profileDescription, popupAvatarImage} from './lib.js'
-import {enableValidation} from './validate.js';
+import {formList, ValidationSettings, popups,
+profile, profileEditForm, cardAddForm, popupPlace, 
+popupProfile, popupAvatar, popupAvatarImage,
+profileAvatar,profileName, profileDescription} from './lib.js'
+
+import {enableValidation, setSaveButtonStatus} from './validate.js';
+
+import {profileServerSave, profileAvatarServerSave} from './api.js';
 // открытие закрытие попапов
 
 export function openPopup(item){
 	item.classList.add('popup_opened');
 	document.addEventListener('keydown', closeByEscape);
-	enableValidation(ValidationSettings);
 }
 
 export function closePopup(item){
@@ -37,6 +42,15 @@ function closeByEscape(e){
  profile.querySelector('.profile__edit-avatar').addEventListener('click',(event)=>{
 	openPopup(popupAvatar);
 })
+
+//смена аватарки
+popupAvatar.addEventListener('submit',(event)=>{
+	event.preventDefault();
+	profileAvatarServerSave(popupAvatarImage);
+	profileAvatar.src = popupAvatarImage.value;
+	closePopup(popupAvatar);
+	event.target.reset();
+})
 //*****************************************************
 
 //попап профиля
@@ -57,17 +71,10 @@ profile.querySelector('.profile__button-add-profile').addEventListener('click',(
 
 popupProfile.addEventListener('submit',(event)=>{
 	event.preventDefault();	
+	profileServerSave(profileEditForm);
 	profileName.textContent = profileEditForm.name.value;
   profileDescription.textContent = profileEditForm.description.value;	
 	closePopup(popupProfile);
 });
-
-//смена аватарки
-popupAvatar.addEventListener('submit',(event)=>{
-	event.preventDefault();
-	profileAvatar.src = popupAvatarImage.value;
-	closePopup(popupAvatar);
-	event.target.reset();
-})
 
 enableValidation(ValidationSettings);

@@ -55,14 +55,13 @@ function hideError (input, form, settings) {
 
 
 //переключение кнопи сохранения
-function setSaveButtonStatus (inputList, button, settings){
+export function setSaveButtonStatus (inputList, button, settings){
   if(hasInvalidInput(inputList)){
     button.setAttribute('disabled', true);
     button.classList.add(settings.inactiveButton); 
   }else {
     button.removeAttribute('disabled');
-    button.classList.remove(settings.inactiveButton);
-    
+    button.classList.remove(settings.inactiveButton);    
   }
 }
 //*****************************************************

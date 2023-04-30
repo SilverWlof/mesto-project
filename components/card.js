@@ -1,10 +1,12 @@
 import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom, popupPlace} from './lib.js';
+
 import {closePopup, openPopup} from "./modal.js";
+
 /*
 написать через fetch и Promise. данные отправляются на сервер и от туда подгружаются.
 так же сделать с профилем
-
 */
+
 //создание карточек
 export function createСard (object){
 	const elementTemplate = document.querySelector('#element').content; 
@@ -14,9 +16,9 @@ export function createСard (object){
 	const buttonLike = element.querySelector('.element__button-like');
 	const buttonDel = element.querySelector('.element__button-delete');
 
-	elementText.textContent =  object.text;
-	elementImage.alt = object.text;
-	elementImage.src = object.image;
+	elementText.textContent =  object.name;
+	elementImage.alt = object.name;
+	elementImage.src = object.link;
 
 	elementImage.addEventListener('click', function(event){
 		zoomImage.src = event.target.src
@@ -32,13 +34,18 @@ export function createСard (object){
 	return element;
 }
 
-function creatingInitialCards(item){
+export function creatingInitialCards(item){
 	const element = createСard(item);
 	elements.prepend(element);
 }
 
 //***************************************************
 
+function disableButton(popup){
+	const button = popup.querySelector('.popup__button-save')
+	button.setAttribute('disabled', true);
+  button.classList.add('popup__button-save_disable'); 
+}
 
 //отправка карточки элемента
 popupPlace.addEventListener('submit',(event)=>{
@@ -47,8 +54,10 @@ popupPlace.addEventListener('submit',(event)=>{
 		text: cardAddForm.placeName.value,
 		image: cardAddForm.placeImage.value
 	}
+	console.log(event.this);
 	closePopup(popupPlace);
 	event.target.reset();
+	disableButton(popupPlace);
 	creatingInitialCards(item);
 }); 
 
@@ -65,5 +74,4 @@ elements.addEventListener('click', (evt)=>{
 
 //***************************************************
 
-
-initialCards.forEach(creatingInitialCards);
+//initialCards.forEach(creatingInitialCards);
