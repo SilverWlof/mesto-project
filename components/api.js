@@ -10,7 +10,8 @@ export function cards(){
   })
     .then(res => res.json())
     .then((result) => {
-      result.forEach(creatingInitialCards);
+      result.reverse().forEach(creatingInitialCards);
+      console.log(result)
     }); 
 }
 cards();
@@ -66,8 +67,7 @@ export function addCard(item){
     },
     body: JSON.stringify({
       name: item.name,
-      linl: item.link    
+      link: item.link    
     })
-  });
-  console.log(item)
+  })
 }
