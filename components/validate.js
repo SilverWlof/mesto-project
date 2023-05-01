@@ -28,6 +28,8 @@ function checkInputValidity (form, input, settings) {
 		input.setCustomValidity(input.dataset.errorMassage);
   }else if(input.validity.typeMismatch){
   	input.setCustomValidity(input.dataset.errorMassageUrl);
+  }else if(input.validity.tooShort){
+    input.setCustomValidity(input.dataset.errorMassageShort);
   }else {
   	input.setCustomValidity("");
   };

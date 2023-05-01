@@ -2,6 +2,8 @@ import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom,
 
 import {closePopup, openPopup} from "./modal.js";
 
+import {addCard} from './api.js';
+
 /*
 написать через fetch и Promise. данные отправляются на сервер и от туда подгружаются.
 так же сделать с профилем
@@ -51,10 +53,12 @@ function disableButton(popup){
 popupPlace.addEventListener('submit',(event)=>{
 	event.preventDefault();	
 	const item = {
-		text: cardAddForm.placeName.value,
-		image: cardAddForm.placeImage.value
+		name: cardAddForm.placeName.value,
+		link: cardAddForm.placeImage.value
 	}
-	console.log(event.this);
+
+	addCard(item);
+
 	closePopup(popupPlace);
 	event.target.reset();
 	disableButton(popupPlace);

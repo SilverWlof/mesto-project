@@ -19,11 +19,11 @@
           <h2 class="popup__header">Редактировать профиль</h2>
           <form name="ProfileForm" class="form" novalidate>            
             <label class="form__fild">
-              <input type="text" id="name" name="name" class="popup__input" placeholder = 'Введите имя' minlength="2" maxlength="30" pattern="^[A-Za-zА-Яа-яЁё\s]+$" data-error-massage='Разрешены только буквы и пробел.' required>  
+              <input type="text" id="name" name="name" class="popup__input" placeholder = 'Введите имя' minlength="2" maxlength="30" pattern="^[A-Za-zА-Яа-яЁё\s]+$" data-error-massage='Разрешены только буквы и пробел.'data-error-massage-short='Минимум 2 символа' required>  
               <span class="popup__warning name-error"></span>
             </label>
             <label class="form__fild">
-              <input type="text" id="description" name="description" class="popup__input" placeholder="Чем вы занимаетесь?" minlength="2" maxlength="200" pattern="^[A-Za-zА-Яа-яЁё\s]+$" data-error-massage='Разрешены только буквы и пробел.' required>
+              <input type="text" id="description" name="description" class="popup__input" placeholder="Чем вы занимаетесь?" minlength="2" maxlength="200" pattern="^[A-Za-zА-Яа-яЁё\s]+$" data-error-massage='Разрешены только буквы и пробел.' data-error-massage-short='Минимум 2 символа' required>
               <span class="popup__warning description-error"></span>
             </label>
             <button id="button-save-profile" type="submit" class="popup__button-save">Сохранить</button>
@@ -38,7 +38,7 @@
           <h2 class="popup__header">Новое место</h2>
           <form name="CardForm" class="form" novalidate>
             <label class="form__fild">
-              <input type="text" id="placeName" name="placeName" class="popup__input" placeholder="Название места" minlength="2" maxlength="30" required pattern="^[A-Za-zА-Яа-яЁё\s]+$" data-error-massage='Разрешены только буквы и пробел.'>
+              <input type="text" id="placeName" name="placeName" class="popup__input" placeholder="Название места" minlength="2" maxlength="30" required pattern="^[A-Za-zА-Яа-яЁё\s]+$" data-error-massage='Разрешены только буквы и пробел.' data-error-massage-short='Минимум 2 символа' required>
               <span class="popup__warning placeName-error"></span>
             </label>
 

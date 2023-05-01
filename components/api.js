@@ -10,7 +10,6 @@ export function cards(){
   })
     .then(res => res.json())
     .then((result) => {
-      console.log(result);
       result.forEach(creatingInitialCards);
     }); 
 }
@@ -58,7 +57,7 @@ export function profileAvatarServerSave(avatSrc){
   });
 }
 
-export function addCard(name, link){
+export function addCard(item){
   fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards', {
     method: 'POST',
     headers: {
@@ -66,8 +65,9 @@ export function addCard(name, link){
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: name,
-      linl:link    
+      name: item.name,
+      linl: item.link    
     })
   });
+  console.log(item)
 }
