@@ -32,9 +32,12 @@
 .element__image{background-color:#efefef;height:282px;margin-bottom:22px;width:282px}
 .element__description{align-items:center;display:flex;justify-content:space-between;margin-left:21px;margin-right:20px}
 .element__text{color:#000;font-family:Inter,Arial,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:80%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.element__counter-like{font-family:Inter,Arial,sans-serif;font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:0;padding:0;text-align:center}
 .element__button-like{background-color:transparent;background-image:url(87ed371465c7a6a1cd01.svg);background-size:cover;border:none;height:19px;padding:0;width:22px}.element__button-like:hover{cursor:pointer;opacity:.5}.element__button-like:active{background-image:url(fe17a515669479b1e649.svg);opacity:1}
 .element__button-like_liked{background-image:url(fe17a515669479b1e649.svg)}
 .element__button-delete{background-color:transparent;background-image:url(cbc09a894bdd4c956365.svg);background-size:cover;border:none;height:19px;position:absolute;right:20px;top:20px;width:18px}.element__button-delete:hover{cursor:pointer;opacity:.5}
+.element__button-delete_disable{visibility:hidden}.element__button-delete_disable:hover{cursor:pointer}
 .footer{color:#545454;flex-shrink:0;margin-bottom:60px;margin-top:67px}@media screen and (max-width:767px){.footer{margin-bottom:36px;margin-top:48px}}
 .footer__copyright{font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:122%;margin:0;padding:0}@media screen and (max-width:767px){.footer__copyright{font-size:14px;line-height:17px;margin-left:19px}}
 
