@@ -44,9 +44,12 @@
 @import url('../blocks/element/__image/element__image.css');
 @import url('../blocks/element/__description/element__description.css');
 @import url('../blocks/element/__text/element__text.css');
+@import url('../blocks/element/__like-block/element__like-block.css');
+@import url('../blocks/element/__counter-like/element__counter-like.css');
 @import url('../blocks/element/__button-like/element__button-like.css');
 @import url('../blocks/element/__button-like/_liked/element__button-like_liked.css');
 @import url('../blocks/element/__button-delete/element__button-delete.css');
+@import url('../blocks/element/__button-delete/_disable/element__button-delete_disable.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');

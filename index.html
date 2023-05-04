@@ -77,6 +77,21 @@
         </div>
       </section>
 
+<!-- ***************************************************** -->
+
+      <section id="popup__delete-card" class="popup">
+        <div class="popup__container">
+          <button type="button" class="popup__button-close"></button>
+          <h2 class="popup__header">Вы уверены?</h2>
+
+          <form name="delete-card" class="form" novalidate>            
+
+            <button id="button-delete-card" type="submit" class="popup__button-save">Да</button>
+
+          </form>
+        </div>
+      </section>
+
 <!-- /\************************ПОПАПЫ*************************/\ -->
 
 
@@ -116,9 +131,10 @@
         <img src="" alt="" class="element__image">
         <div class="element__description">
           <h2 class="element__text"></h2>
-          <button type="button" class="element__button-like"></button>
-          <!-- добавить счечик лайков -->
-          <!-- <p class="counter-like"></p> -->
+          <div class="element__like-block">
+            <button type="button" class="element__button-like"></button>
+            <p class="element__counter-like"></p>
+          </div>
         </div>
       </article>
     </template>

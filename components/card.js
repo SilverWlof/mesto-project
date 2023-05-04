@@ -1,13 +1,9 @@
-import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom, popupPlace} from './lib.js';
+import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom, popupPlace, popudDelCard} from './lib.js';
 
 import {closePopup, openPopup} from "./modal.js";
 
-import {addCard} from './api.js';
+import {addCard, delCard, cards, setLike, delLike} from './api.js';
 
-/*
-написать через fetch и Promise. данные отправляются на сервер и от туда подгружаются.
-так же сделать с профилем
-*/
 
 //создание карточек
 export function createСard (object){
@@ -17,20 +13,47 @@ export function createСard (object){
 	const elementImage = element.querySelector('.element__image');
 	const buttonLike = element.querySelector('.element__button-like');
 	const buttonDel = element.querySelector('.element__button-delete');
+	const counter =  element.querySelector('.element__counter-like');
+
+	element.id = object._id;
+
+	if(object.owner._id === 'ff9b1be57da3d4b8738ed1e8'){
+		element.id = object._id;
+		buttonDel.addEventListener('click', function(event){
+			delCard(element.id);	
+			event.target.closest('.element').remove();
+		})
+	} else{
+		buttonDel.setAttribute('disabled', true);
+		buttonDel.classList.add('element__button-delete_disable'); 
+	}
+
+
 
 	elementText.textContent =  object.name;
 	elementImage.alt = object.name;
 	elementImage.src = object.link;
+
+
+	if(!object.likes){
+		counter.textContent = '0';
+		}
+		else{
+		counter.textContent = object.likes.length;
+
+		for (var i = 0; i < object.likes.length; i++) {
+		  if(object.likes[i]._id === "ff9b1be57da3d4b8738ed1e8"){
+		 		buttonLike.classList.add('element__button-like_liked');
+		  }
+		};
+	}
+
 
 	elementImage.addEventListener('click', function(event){
 		zoomImage.src = event.target.src
 		zoomImage.alt = event.target.alt
 		zoomDescript.textContent = event.target.alt
 		openPopup(popupZoom);
-	})
-
-	buttonDel.addEventListener('click', function(event){
-		event.target.closest('.element').remove();
 	})
 
 	return element;
@@ -52,17 +75,15 @@ function disableButton(popup){
 //отправка карточки элемента
 popupPlace.addEventListener('submit',(event)=>{
 	event.preventDefault();	
-	const item = {
-		name: cardAddForm.placeName.value,
-		link: cardAddForm.placeImage.value
-	}
+	// const item = {
+	// 	name: event.target.placeName.value,
+	// 	link: event.target.placeImage.value
+	// }
 
-	addCard(item);
-
-	closePopup(popupPlace);
+	addCard(event);
+	
 	event.target.reset();
 	disableButton(popupPlace);
-	creatingInitialCards(item);
 }); 
 
 //*****************************************************
@@ -73,9 +94,31 @@ popupPlace.addEventListener('submit',(event)=>{
 
 elements.addEventListener('click', (evt)=>{
 	if(evt.target.classList.contains('element__button-like')){
-	event.target.classList.toggle('element__button-like_liked');}
+		if(!event.target.classList.contains('element__button-like_liked')){
+			setLike(evt.target.closest('.element'));
+		}
+		else{
+			delLike(evt.target.closest('.element'));
+		}	
+		event.target.classList.toggle('element__button-like_liked')
+	}
 })
 
 //***************************************************
+
+
+
+//Удаление карточек
+
+// popudDelCard.addEventListener('submit',(event)=>{
+// 	event.preventDefault();
+// 	delCard(popudDelCard.name);
+// 	closePopup(popudDelCard);
+// })
+
+
+
+
+//*****************************************************
 
 //initialCards.forEach(creatingInitialCards);

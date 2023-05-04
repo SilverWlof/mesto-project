@@ -1,0 +1,7 @@
+.element__button-delete_disable{
+	visibility: hidden;
+}
+
+.element__button-delete_disable:hover{
+	cursor: pointer
+}

@@ -1,6 +1,6 @@
 import {formList, ValidationSettings, popups,
 profile, profileEditForm, cardAddForm, popupPlace, 
-popupProfile, popupAvatar, popupAvatarImage,
+popupProfile, popupAvatar, popupAvatarImage, popudDelCard,
 profileAvatar,profileName, profileDescription} from './lib.js'
 
 import {enableValidation, setSaveButtonStatus} from './validate.js';
@@ -14,18 +14,17 @@ export function openPopup(item){
 }
 
 export function closePopup(item){
-	item.classList.remove('popup_opened');
-	document.removeEventListener('keydown', closeByEscape); 
+	item.target.closest('.popup_opened').classList.remove('popup_opened');
 }
 
 
 popups.forEach((popup) => {
 	popup.addEventListener('mousedown', (evt) => {
 		if (evt.target.classList.contains('popup_opened')) {
-			closePopup(popup)
+			closePopup(evt)
 		}
 		if (evt.target.classList.contains('popup__button-close')) {
-			closePopup(popup)
+			closePopup(evt)
 		}
 	})
 })
@@ -33,7 +32,8 @@ popups.forEach((popup) => {
 function closeByEscape(e){
   if (e.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened') 
-    closePopup(openedPopup);
+    openedPopup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEscape); 
   }
 }
 //*****************************************************
@@ -48,7 +48,7 @@ popupAvatar.addEventListener('submit',(event)=>{
 	event.preventDefault();
 	profileAvatarServerSave(popupAvatarImage);
 	profileAvatar.src = popupAvatarImage.value;
-	closePopup(popupAvatar);
+	closePopup(event);
 	event.target.reset();
 })
 //*****************************************************
@@ -71,10 +71,9 @@ profile.querySelector('.profile__button-add-profile').addEventListener('click',(
 
 popupProfile.addEventListener('submit',(event)=>{
 	event.preventDefault();	
-	profileServerSave(profileEditForm);
+	profileServerSave(event);
 	profileName.textContent = profileEditForm.name.value;
   profileDescription.textContent = profileEditForm.description.value;	
-	closePopup(popupProfile);
 });
 
 enableValidation(ValidationSettings);

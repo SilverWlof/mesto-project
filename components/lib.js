@@ -3,6 +3,7 @@ export const popupProfile = document.querySelector('#popup-profile');
 export const popupPlace = document.querySelector('#popup-place');
 export const popupZoom = document.querySelector('#popup-zoom');
 export const popupAvatar = document.querySelector('#popup__updata-avatar');
+export const popudDelCard = document.querySelector('#popup__delete-card');
 
 export const profileEditForm = document.forms.ProfileForm;
 export const cardAddForm = document.forms.CardForm;
