@@ -1,11 +1,13 @@
 import {formList, ValidationSettings, popups,
 profile, profileEditForm, cardAddForm, popupPlace, 
-popupProfile, popupAvatar, popupAvatarImage, popudDelCard,
+popupProfile, popupAvatar, popudDelCard,
 profileAvatar,profileName, profileDescription} from './lib.js'
+
+import {creatingInitialCards, createCard} from './card.js';
 
 import {enableValidation, setSaveButtonStatus} from './validate.js';
 
-import {profileServerSave, profileAvatarServerSave} from './api.js';
+import {profileServerSave, profileAvatarServerSave, profileStart, cards} from './api.js';
 // открытие закрытие попапов
 
 export function openPopup(item){
@@ -14,17 +16,18 @@ export function openPopup(item){
 }
 
 export function closePopup(item){
-	item.target.closest('.popup_opened').classList.remove('popup_opened');
+	item.classList.remove('popup_opened');
+	document.removeEventListener('keydown', closeByEscape);
 }
 
 
 popups.forEach((popup) => {
 	popup.addEventListener('mousedown', (evt) => {
 		if (evt.target.classList.contains('popup_opened')) {
-			closePopup(evt)
+			closePopup(evt.target)
 		}
 		if (evt.target.classList.contains('popup__button-close')) {
-			closePopup(evt)
+			closePopup(evt.target.closest('.popup_opened'))
 		}
 	})
 })
@@ -46,9 +49,20 @@ function closeByEscape(e){
 //смена аватарки
 popupAvatar.addEventListener('submit',(event)=>{
 	event.preventDefault();
-	profileAvatarServerSave(popupAvatarImage);
-	profileAvatar.src = popupAvatarImage.value;
-	closePopup(event);
+	const changeAvatar = new Promise(function(resolve, reject){
+		resolve(profileAvatarServerSave(event))
+	})
+	changeAvatar
+		.finally(()=>{
+	    event.target.querySelector('.popup__button-save').textContent = 'Сохранение...';
+	  })
+		.then((value) => {
+  		profileAvatar.src = value.avatar;
+		})
+		.then(()=>{
+  		closePopup(popupAvatar)
+  		event.target.querySelector('.popup__button-save').textContent = 'Сохранить';
+  	})
 	event.target.reset();
 })
 //*****************************************************
@@ -71,9 +85,41 @@ profile.querySelector('.profile__button-add-profile').addEventListener('click',(
 
 popupProfile.addEventListener('submit',(event)=>{
 	event.preventDefault();	
-	profileServerSave(event);
-	profileName.textContent = profileEditForm.name.value;
-  profileDescription.textContent = profileEditForm.description.value;	
+	const changeProfile = new Promise(function(resolve, reject){
+			resolve(profileServerSave(event))		
+	})	
+	changeProfile
+		.finally(()=>{
+		  event.target.querySelector('.popup__button-save').textContent = 'Сохранение...';
+		})
+		.then((value) => {
+			profileName.textContent = value.name;
+  		profileDescription.textContent = value.about;
+  	})
+  	.then(()=>{
+  		closePopup(popupProfile)
+  		event.target.querySelector('.popup__button-save').textContent = 'Сохранить';
+  	})
 });
+
+
+export let profileId = '123';
+
+const loadedPage = new Promise(function(resolve, reject){
+	resolve(profileStart())	
+});
+
+loadedPage
+	.then((value) => {
+   	profileName.textContent = value.name;
+   	profileDescription.textContent = value.about;
+   	profileAvatar.src = value.avatar;
+   	profileId = value._id;
+ 	})
+ 	.then(()=>{
+ 		cards().then((value) => {
+   	value.reverse().forEach(creatingInitialCards)
+   	})
+ 	})
 
 enableValidation(ValidationSettings);

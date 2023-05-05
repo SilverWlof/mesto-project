@@ -1,12 +1,13 @@
 import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom, popupPlace, popudDelCard} from './lib.js';
 
-import {closePopup, openPopup} from "./modal.js";
+import {closePopup, openPopup, profileId} from "./modal.js";
+
 
 import {addCard, delCard, cards, setLike, delLike} from './api.js';
 
 
 //создание карточек
-export function createСard (object){
+export function createCard (object){
 	const elementTemplate = document.querySelector('#element').content; 
 	const element = elementTemplate.querySelector('.element').cloneNode(true);
 	const elementText = element.querySelector('.element__text');
@@ -17,7 +18,7 @@ export function createСard (object){
 
 	element.id = object._id;
 
-	if(object.owner._id === 'ff9b1be57da3d4b8738ed1e8'){
+	if(object.owner._id === profileId){
 		element.id = object._id;
 		buttonDel.addEventListener('click', function(event){
 			delCard(element.id);	
@@ -28,12 +29,9 @@ export function createСard (object){
 		buttonDel.classList.add('element__button-delete_disable'); 
 	}
 
-
-
 	elementText.textContent =  object.name;
 	elementImage.alt = object.name;
 	elementImage.src = object.link;
-
 
 	if(!object.likes){
 		counter.textContent = '0';
@@ -41,8 +39,8 @@ export function createСard (object){
 		else{
 		counter.textContent = object.likes.length;
 
-		for (var i = 0; i < object.likes.length; i++) {
-		  if(object.likes[i]._id === "ff9b1be57da3d4b8738ed1e8"){
+		for (let i = 0; i < object.likes.length; i++) {
+		  if(object.likes[i]._id === profileId){
 		 		buttonLike.classList.add('element__button-like_liked');
 		  }
 		};
@@ -60,7 +58,7 @@ export function createСard (object){
 }
 
 export function creatingInitialCards(item){
-	const element = createСard(item);
+	const element = createCard(item);
 	elements.prepend(element);
 }
 
@@ -75,13 +73,21 @@ function disableButton(popup){
 //отправка карточки элемента
 popupPlace.addEventListener('submit',(event)=>{
 	event.preventDefault();	
-	// const item = {
-	// 	name: event.target.placeName.value,
-	// 	link: event.target.placeImage.value
-	// }
+	const creatingCard = new Promise(function(resolve, reject){
+		resolve(addCard(event)) 			
+	})		
+	creatingCard
+		.finally(()=>{
+		  event.target.querySelector('.popup__button-save').textContent = 'Сохранение...';
+		})
+		.then((value)=>{
+			creatingInitialCards(value)
+		})
+		.then(()=>{
+	  	closePopup(popupPlace)
+	  	event.target.querySelector('.popup__button-save').textContent = 'Сохранить';
+	  })
 
-	addCard(event);
-	
 	event.target.reset();
 	disableButton(popupPlace);
 }); 
@@ -107,18 +113,3 @@ elements.addEventListener('click', (evt)=>{
 //***************************************************
 
 
-
-//Удаление карточек
-
-// popudDelCard.addEventListener('submit',(event)=>{
-// 	event.preventDefault();
-// 	delCard(popudDelCard.name);
-// 	closePopup(popudDelCard);
-// })
-
-
-
-
-//*****************************************************
-
-//initialCards.forEach(creatingInitialCards);

@@ -18,8 +18,6 @@ export const profileName = profile.querySelector('.profile__name');
 export const profileDescription = profile.querySelector('.profile__description');
 export const profileAvatar = profile.querySelector('.profile__avatar');
 
-export const popupAvatarImage = popupAvatar.querySelector('#avatarImage');
-
 export const elements = document.querySelector('.elements');
 
 export const formList = Array.from(document.querySelectorAll('.form'));
