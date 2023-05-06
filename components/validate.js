@@ -66,6 +66,12 @@ export function setSaveButtonStatus (inputList, button, settings){
     button.classList.remove(settings.inactiveButton);    
   }
 }
+
+export function disableButton(popup){
+  const button = popup.querySelector('.popup__button-save')
+  button.setAttribute('disabled', true);
+  button.classList.add('popup__button-save_disable'); 
+}
 //*****************************************************
 
 

@@ -2,9 +2,7 @@ import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom,
 
 import {closePopup, openPopup, profileId} from "./modal.js";
 
-
-import {addCard, delCard, cards, setLike, delLike} from './api.js';
-
+import {receivingСards, sendingCard, deletingCards, setLike, deletingLike} from './api.js';
 
 //создание карточек
 export function createCard (object){
@@ -21,7 +19,7 @@ export function createCard (object){
 	if(object.owner._id === profileId){
 		element.id = object._id;
 		buttonDel.addEventListener('click', function(event){
-			delCard(element.id);	
+			deletingCards(element.id);	
 			event.target.closest('.element').remove();
 		})
 	} else{
@@ -46,7 +44,6 @@ export function createCard (object){
 		};
 	}
 
-
 	elementImage.addEventListener('click', function(event){
 		zoomImage.src = event.target.src
 		zoomImage.alt = event.target.alt
@@ -64,49 +61,41 @@ export function creatingInitialCards(item){
 
 //***************************************************
 
-function disableButton(popup){
-	const button = popup.querySelector('.popup__button-save')
-	button.setAttribute('disabled', true);
-  button.classList.add('popup__button-save_disable'); 
-}
-
-//отправка карточки элемента
-popupPlace.addEventListener('submit',(event)=>{
-	event.preventDefault();	
-	const creatingCard = new Promise(function(resolve, reject){
-		resolve(addCard(event)) 			
-	})		
-	creatingCard
-		.finally(()=>{
-		  event.target.querySelector('.popup__button-save').textContent = 'Сохранение...';
-		})
-		.then((value)=>{
-			creatingInitialCards(value)
-		})
-		.then(()=>{
-	  	closePopup(popupPlace)
-	  	event.target.querySelector('.popup__button-save').textContent = 'Сохранить';
-	  })
-
-	event.target.reset();
-	disableButton(popupPlace);
-}); 
-
-//*****************************************************
-
 
 
 //Обработчик лайка
 
 elements.addEventListener('click', (evt)=>{
 	if(evt.target.classList.contains('element__button-like')){
-		if(!event.target.classList.contains('element__button-like_liked')){
-			setLike(evt.target.closest('.element'));
+
+		if(!evt.target.classList.contains('element__button-like_liked')){
+			new Promise(function(resolve, reject){
+				resolve(setLike(evt.target.closest('.element'))) 			
+			})
+			.then((data)=>{
+    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
+  		})
+  		.then(()=>{
+  			evt.target.classList.toggle('element__button-like_liked')
+  		})
+  		.catch((err) => {
+	   		console.log('ошибка - ' + err);
+	  	})
 		}
 		else{
-			delLike(evt.target.closest('.element'));
+		 	new Promise(function(resolve, reject){
+				resolve(deletingLike(evt.target.closest('.element'))) 			
+			})
+			.then((data)=>{
+    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
+  		})
+  		.then(()=>{
+  			evt.target.classList.toggle('element__button-like_liked')
+  		})
+  		.catch((err) => {
+	   		console.log('ошибка - ' + err);
+	  	})
 		}	
-		event.target.classList.toggle('element__button-like_liked')
 	}
 })
 

@@ -1,6 +1,6 @@
 //****************Загрузка с сервера***********************************
 
-export function cards(){
+export function receivingСards (){
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards', {
     headers: {
       authorization: '6ad1c47f-6af4-42c4-b56f-bacd15588390'
@@ -15,7 +15,7 @@ export function cards(){
 }
 
 
-export function profileStart(){
+export function receivingProfile(){
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/users/me', {
     headers: {
       authorization: '6ad1c47f-6af4-42c4-b56f-bacd15588390'
@@ -36,7 +36,7 @@ export function profileStart(){
 
 //**********************Отправка данных на сервер*****************************
 
-export function profileServerSave(profileData){
+export function sendingProfile(profileData){
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/users/me', {
     method: 'PATCH',
     headers: {
@@ -54,14 +54,11 @@ export function profileServerSave(profileData){
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   })
-  .catch((err) => {
-    console.log('ошибка - ' + err);
-  })
 }
 
 
 
-export function profileAvatarServerSave(avatSrc){
+export function sendingAvatar(avatSrc){
   const buttonSave = avatSrc.target.querySelector('.popup__button-save');
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/users/me/avatar', {
     method: 'PATCH',
@@ -82,15 +79,12 @@ export function profileAvatarServerSave(avatSrc){
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   })
-  .catch((err) => {
-    console.log('ошибка - ' + err);
-  })
 }
 
 
 //***************************************************
 
-export function addCard(item){
+export function sendingCard(item){
   const buttonSave = item.target.querySelector('.popup__button-save');
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards', {
     method: 'POST',
@@ -109,14 +103,11 @@ export function addCard(item){
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   })
-  .catch((err) => {
-    console.log('ошибка отпраки - ' + err);
-  })
 }
 
 //***************************************************
 
-export function delCard(cardId){
+export function deletingCards(cardId){
 return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards/' + cardId, {
     method: 'DELETE',
     headers: {
@@ -128,10 +119,7 @@ return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards/' + cardId,
       return res.json();      
     }
     return Promise.reject(`Ошибка: ${res.status}`);
-  })
-  .catch((err) => {
-    console.log('ошибка удаления - ' + err); 
-  }); 
+  }) 
 }
 //***************************************************
 
@@ -140,8 +128,6 @@ return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards/' + cardId,
 //***************************ЛАЙКИ************************
 
 export function setLike(cardId){
-
-  const counterLike = cardId.querySelector('.element__counter-like');
 
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards/likes/' + cardId.id, {
       method: 'PUT',
@@ -155,14 +141,9 @@ export function setLike(cardId){
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   })
-  .then((data)=>{
-    counterLike.textContent = data.likes.length;
-  })
 }
 
-export function delLike(cardId){
-
-  const counterLike = cardId.querySelector('.element__counter-like');
+export function deletingLike(cardId){
 
   return fetch('https://mesto.nomoreparties.co/v1/plus-cohort-23/cards/likes/' + cardId.id, {
       method: 'DELETE',
@@ -176,9 +157,6 @@ export function delLike(cardId){
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     })
-  .then((data)=>{
-    counterLike.textContent = data.likes.length;
-  })
 }
 
 //***************************************************
