@@ -15,7 +15,7 @@
 .popup__button-save{background-color:#000;border:none;border-radius:2px;color:#fff;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;height:50px;line-height:22px;margin-bottom:37px;margin-top:29px;padding:0;text-align:center;width:100%}.popup__button-save:hover{background-color:rgba(0,0,0,.8);cursor:pointer}@media screen and (max-width:767px){.popup__button-save{font-size:14px;height:46px;line-height:17px;margin-bottom:25px;margin-top:44px}}
 .popup__button-close{background-color:transparent;background-image:url(ad98de32e342afafa118.svg);background-size:cover;border:none;height:32px;position:absolute;right:-40px;top:-40px;width:32px}.popup__button-close:hover{cursor:pointer;opacity:.6}@media screen and (max-width:768px){.popup__button-close{height:20px;right:0;top:-36px;width:20px}}
 .popup__button-save_disable{background-color:#fff;border:1px solid #000;color:#000;opacity:.15}.popup__button-save_disable:hover{background-color:#fff;cursor:default}
-.popup__warning{color:red;font-family:Inter;font-size:12px;font-style:normal;font-weight:400;left:0;line-height:15px;margin:0;position:absolute;top:33px;visibility:hidden}
+.popup__warning{color:red;font-family:Inter;font-size:12px;font-style:normal;font-weight:400;left:0;line-height:15px;margin:0;position:absolute;top:33px;visibility:hidden;width:300px}
 .popup__warning_show{visibility:visible}
 .form__fild{position:relative}
 .profile{align-items:center;display:flex;justify-content:space-between;margin-bottom:51px;margin-top:40px}@media screen and (max-width:768px){.profile{flex-direction:column;margin-bottom:36px;margin-top:42px}}
