@@ -1,8 +1,3 @@
-//import {formList, , ,
-// profile, profileEditForm, cardAddForm, popupPlace, 
-// popupProfile, popupAvatar, popudDelCard,
-// ,, } from './lib.js'
-
 import {popups, ValidationSettings, profileName, profileDescription, profileAvatar} from './lib.js'
 
 import {creatingInitialCards} from './mainScript.js';
