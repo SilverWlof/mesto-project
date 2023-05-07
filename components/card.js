@@ -1,6 +1,6 @@
 import {elements} from './lib.js';
 
-import {profileId} from "./modal.js";
+import {profileId} from "./index.js";
 
 import {zoomingImage} from './zoom.js';
 
@@ -48,39 +48,40 @@ export function createCard (object){
 
 	elementImage.addEventListener('click', zoomingImage);
 
+//Обработчик лайка
+	element.addEventListener('click', (evt)=>{
+		if(evt.target.classList.contains('element__button-like')){
+			if(!evt.target.classList.contains('element__button-like_liked')){
+				setLike(evt.target.closest('.element'))
+					.then((data)=>{
+		    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
+		  		})
+		  		.then(()=>{
+		  			evt.target.classList.toggle('element__button-like_liked')
+		  		})
+		  		.catch((err) => {
+			   		console.log('ошибка - ' + err);
+			  	})
+			}
+			else{
+				deletingLike(evt.target.closest('.element'))	
+					.then((data)=>{
+		    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
+		  		})
+		  		.then(()=>{
+		  			evt.target.classList.toggle('element__button-like_liked')
+		  		})
+		  		.catch((err) => {
+			   		console.log('ошибка - ' + err);
+			  	})
+			}	
+		}
+	})
+
 	return element;
 }
 
 //***************************************************
-//Обработчик лайка
-elements.addEventListener('click', (evt)=>{
-	if(evt.target.classList.contains('element__button-like')){
-		if(!evt.target.classList.contains('element__button-like_liked')){
-			setLike(evt.target.closest('.element'))
-				.then((data)=>{
-	    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
-	  		})
-	  		.then(()=>{
-	  			evt.target.classList.toggle('element__button-like_liked')
-	  		})
-	  		.catch((err) => {
-		   		console.log('ошибка - ' + err);
-		  	})
-		}
-		else{
-			deletingLike(evt.target.closest('.element'))	
-				.then((data)=>{
-	    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
-	  		})
-	  		.then(()=>{
-	  			evt.target.classList.toggle('element__button-like_liked')
-	  		})
-	  		.catch((err) => {
-		   		console.log('ошибка - ' + err);
-		  	})
-		}	
-	}
-})
-//***************************************************
+
 
 

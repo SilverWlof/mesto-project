@@ -1,7 +1,5 @@
 import {popups, ValidationSettings, profileName, profileDescription, profileAvatar} from './lib.js'
 
-import {creatingInitialCards} from './mainScript.js';
-
 import {enableValidation, setSaveButtonStatus} from './validate.js';
 
 import {receivingСards, receivingProfile, sendingProfile, sendingAvatar} from './api.js';
@@ -37,23 +35,9 @@ function closeByEscape(e){
 }
 //*****************************************************
 
-export let profileId = '123';
+//export let profileId = '123';
 
-receivingProfile()	
-	.then((value) => {
-   	profileName.textContent = value.name;
-   	profileDescription.textContent = value.about;
-   	profileAvatar.src = value.avatar;
-   	profileId = value._id;
- 	})
- 	.then(()=>{
- 		receivingСards().then((value) => {
-   	value.reverse().forEach(creatingInitialCards)
-   	})
- 	})
- 	.catch((err) => {
-   	console.log('ошибка - ' + err);
-  })
+
 
 //*****************************************************
 enableValidation(ValidationSettings);
