@@ -8,6 +8,7 @@ export const popudDelCard = document.querySelector('#popup__delete-card');
 export const profileEditForm = document.forms.ProfileForm;
 export const cardAddForm = document.forms.CardForm;
 export const avatarImageFrom = document.forms.avatarImage;
+export const buttonsSavePopup = document.querySelectorAll('.popup__button-save');
 
 export const zoomImage = popupZoom.querySelector('.popup__zoom-in');
 export const zoomDescript = popupZoom.querySelector('.popup__zoom-description');

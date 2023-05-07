@@ -1,6 +1,8 @@
-import {elements, initialCards, cardAddForm, zoomImage, zoomDescript, popupZoom, popupPlace, popudDelCard} from './lib.js';
+import {elements} from './lib.js';
 
-import {closePopup, openPopup, profileId} from "./modal.js";
+import {profileId} from "./modal.js";
+
+import {zoomingImage} from './zoom.js';
 
 import {receivingСards, sendingCard, deletingCards, setLike, deletingLike} from './api.js';
 
@@ -44,61 +46,41 @@ export function createCard (object){
 		};
 	}
 
-	elementImage.addEventListener('click', function(event){
-		zoomImage.src = event.target.src
-		zoomImage.alt = event.target.alt
-		zoomDescript.textContent = event.target.alt
-		openPopup(popupZoom);
-	})
+	elementImage.addEventListener('click', zoomingImage);
 
 	return element;
 }
 
-export function creatingInitialCards(item){
-	const element = createCard(item);
-	elements.prepend(element);
-}
-
 //***************************************************
-
-
-
 //Обработчик лайка
-
 elements.addEventListener('click', (evt)=>{
 	if(evt.target.classList.contains('element__button-like')){
-
 		if(!evt.target.classList.contains('element__button-like_liked')){
-			new Promise(function(resolve, reject){
-				resolve(setLike(evt.target.closest('.element'))) 			
-			})
-			.then((data)=>{
-    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
-  		})
-  		.then(()=>{
-  			evt.target.classList.toggle('element__button-like_liked')
-  		})
-  		.catch((err) => {
-	   		console.log('ошибка - ' + err);
-	  	})
+			setLike(evt.target.closest('.element'))
+				.then((data)=>{
+	    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
+	  		})
+	  		.then(()=>{
+	  			evt.target.classList.toggle('element__button-like_liked')
+	  		})
+	  		.catch((err) => {
+		   		console.log('ошибка - ' + err);
+		  	})
 		}
 		else{
-		 	new Promise(function(resolve, reject){
-				resolve(deletingLike(evt.target.closest('.element'))) 			
-			})
-			.then((data)=>{
-    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
-  		})
-  		.then(()=>{
-  			evt.target.classList.toggle('element__button-like_liked')
-  		})
-  		.catch((err) => {
-	   		console.log('ошибка - ' + err);
-	  	})
+			deletingLike(evt.target.closest('.element'))	
+				.then((data)=>{
+	    		evt.target.closest('.element').querySelector('.element__counter-like').textContent = data.likes.length;
+	  		})
+	  		.then(()=>{
+	  			evt.target.classList.toggle('element__button-like_liked')
+	  		})
+	  		.catch((err) => {
+		   		console.log('ошибка - ' + err);
+		  	})
 		}	
 	}
 })
-
 //***************************************************
 
 
