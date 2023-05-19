@@ -64,7 +64,11 @@ popupProfile.addEventListener('submit',(event)=>{
 		.then((value) => {
 			profileName.textContent = value.name;
   		profileDescription.textContent = value.about;
+  		closePopup(popupPlace);
   	})
+  	.then(()=>{
+	  	closePopup(popupProfile);
+	  })
   	.catch((err) => {
     	console.log('ошибка - ' + err);
   	})
