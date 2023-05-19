@@ -33,7 +33,6 @@ export function receivingProfile(){
 //***************************************************
 
 
-
 //**********************Отправка данных на сервер*****************************
 
 export function sendingProfile(profileData){

@@ -2,7 +2,6 @@ import {popups, ValidationSettings, profileName, profileDescription, profileAvat
 
 import {enableValidation, setSaveButtonStatus} from './validate.js';
 
-import {receivingСards, receivingProfile, sendingProfile, sendingAvatar} from './api.js';
 // открытие закрытие попапов
 
 export function openPopup(item){
@@ -34,10 +33,6 @@ function closeByEscape(e){
   }
 }
 //*****************************************************
-
-//export let profileId = '123';
-
-
 
 //*****************************************************
 enableValidation(ValidationSettings);

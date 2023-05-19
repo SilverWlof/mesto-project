@@ -23,33 +23,6 @@ export const elements = document.querySelector('.elements');
 
 export const formList = Array.from(document.querySelectorAll('.form'));
 
-export const initialCards = [
-	{
-		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-		text: 'Архыз'
-	},
-	{
-		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-		text: 'Челябинская область'
-	},		
-	{
-		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-		text: 'Иваново'
-	},
-	{
-		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-		text: 'Камчатка'
-	},
-	{
-		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-		text: 'Холмогорский район'
-	},		
-	{
-		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-		text: 'Байкал'
-	}	
-];
-
 export const ValidationSettings = {
 	formList:'form',
 	inputList:'popup__input',
@@ -58,3 +31,30 @@ export const ValidationSettings = {
   inputError: 'error',
   errorClass: 'popup__warning_show'
 }; 
+
+// export const initialCards = [
+// 	{
+// 		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
+// 		text: 'Архыз'
+// 	},
+// 	{
+// 		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
+// 		text: 'Челябинская область'
+// 	},		
+// 	{
+// 		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
+// 		text: 'Иваново'
+// 	},
+// 	{
+// 		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+// 		text: 'Камчатка'
+// 	},
+// 	{
+// 		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
+// 		text: 'Холмогорский район'
+// 	},		
+// 	{
+// 		image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
+// 		text: 'Байкал'
+// 	}	
+// ];
