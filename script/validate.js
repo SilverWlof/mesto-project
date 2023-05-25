@@ -1,3 +1,5 @@
+import {ValidationSettings} from './lib.js';
+
 //вешаем слушатель на активную форму
 export function enableValidation(settings){
   const formList = Array.from(document.querySelectorAll('.' + settings.formList));
